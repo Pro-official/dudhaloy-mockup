@@ -7,7 +7,7 @@
 <title>Dudhaloy Sweets</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+Bengali:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --leaf:#0F6B3A;        /* logo green */
@@ -22,9 +22,10 @@
   --ink:#16261C;         /* body text */
   --ink-soft:#4A5A4F;
   --line:#D9E3D0;
-  --display:"Baloo Da 2", system-ui, sans-serif;
-  --bangla:"Baloo Da 2", system-ui, sans-serif;
-  --body:"Hind Siliguri", system-ui, sans-serif;
+  --hero:"Alkatra", "Noto Serif Bengali", serif;      /* the দুধালয় wordmark only */
+  --display:"Fraunces", "Noto Serif Bengali", serif;  /* headings, prices */
+  --bangla:"Noto Serif Bengali", "Fraunces", serif;   /* Bangla names */
+  --body:"Figtree", "Noto Sans Bengali", system-ui, sans-serif;
   --wrap:min(1180px, 100% - 32px);
 }
 *{box-sizing:border-box}
@@ -34,7 +35,7 @@ img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--saffron);outline-offset:3px;border-radius:4px}
 .wrap{width:var(--wrap);margin-inline:auto}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-.005em;margin:0;text-wrap:balance}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;letter-spacing:-.005em;margin:0;text-wrap:balance}
 h2{font-size:clamp(2rem,4.2vw,3.1rem)}
 h3{font-size:1.45rem}
 p{margin:0 0 1em;max-width:62ch}
@@ -48,7 +49,7 @@ p{margin:0 0 1em;max-width:62ch}
 .top.solid .bar,.top.scrolled .bar{background:rgba(8,59,34,.94);box-shadow:0 12px 32px rgba(8,40,22,.22);height:60px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
 .brand img{width:44px;height:44px;border-radius:50%;background:#fff}
-.brand span{font-family:var(--bangla);font-weight:700;font-size:1.55rem;line-height:1;color:var(--ivory)}
+.brand span{font-family:var(--hero);font-weight:700;font-size:1.6rem;line-height:1;color:var(--ivory);padding-top:.1em}
 .nav{display:flex;gap:4px;margin:0 auto;padding:4px;border-radius:999px;background:rgba(255,255,255,.06)}
 .nav a{position:relative;padding:9px 18px;border-radius:999px;text-decoration:none;font-weight:500;color:#D7E6DA;transition:background .2s,color .2s}
 .nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
@@ -80,10 +81,16 @@ p{margin:0 0 1em;max-width:62ch}
 .hero{position:relative;background:var(--forest);color:var(--milk);overflow:hidden;padding:168px 0 176px}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 40%,rgba(185,214,108,.18),transparent 70%)}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.hero-name{display:block;font-family:var(--bangla);font-weight:800;font-size:clamp(5rem,12vw,9.5rem);line-height:1.05;margin:0;color:var(--ivory);background:linear-gradient(180deg,#FBF5E8 10%,#E9D6AE 95%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.01em;padding:.06em 0 .22em;margin-bottom:-.22em}
-.hero-latin{font-family:var(--display);font-size:clamp(1.3rem,2.2vw,1.7rem);color:var(--saffron);margin:36px 0 32px}
-.hero-lede{font-size:1.2rem;color:#DCE9DD;max-width:30ch;margin-bottom:32px}
+.hero-name{display:block;font-family:var(--hero);font-weight:700;font-size:clamp(4.25rem,9.5vw,8rem);line-height:1.2;margin:0;color:var(--ivory);background:linear-gradient(180deg,#FBF5E8 15%,#E7D3A8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0;padding:.08em .02em .18em 0;margin:-.08em 0 -.18em}
+.hero-latin{font-family:var(--display);font-weight:500;font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.3;letter-spacing:.005em;color:var(--saffron);margin:16px 0 0;display:flex;align-items:center;gap:16px}
+.hero-latin::before{content:"";width:40px;height:1.5px;background:currentColor;opacity:.7;flex:none}
+.hero-lede{font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.65;color:rgba(243,233,210,.82);max-width:36ch;margin:28px 0 40px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-cta .btn{min-height:52px;padding:0 28px}
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(243,233,210,.14);max-width:420px;color:rgba(243,233,210,.75);font-size:.92rem;line-height:1.45}
+.hero-proof svg{width:28px;height:28px;flex:none;color:var(--saffron)}
+.hero-proof b{color:var(--ivory);font-weight:600}
+@media (max-width:560px){.hero-cta{display:grid}.hero-cta .btn{justify-content:center}.hero-latin{gap:12px}.hero-latin::before{width:28px}}
 .plate{position:relative;justify-self:center;width:min(480px,100%)}
 .disc{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;border:10px solid var(--milk);box-shadow:0 0 0 3px var(--saffron),0 40px 80px rgba(0,0,0,.35);background:var(--milk)}
 .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12) rotate(-4deg);transition:opacity 1.2s cubic-bezier(.4,0,.2,1),transform 6s cubic-bezier(.2,.6,.2,1)}
@@ -629,26 +636,6 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   document.head.appendChild(st);
 })();
 </script>
-<script>
-/* type preview: index.html?type=a|b|c tries a full font pairing. Alkatra is the hero name in all three. */
-(function(){
-  var SETS={
-    a:{css:'Alkatra:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+Bengali:wght@500;600;700&family=Figtree:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600',
-       head:'"Fraunces","Noto Serif Bengali",serif',bn:'"Noto Serif Bengali","Fraunces",serif',body:'"Figtree","Noto Sans Bengali",system-ui,sans-serif',hw:600},
-    b:{css:'Alkatra:wght@600;700&family=Cormorant+Garamond:wght@500;600;700&family=Tiro+Bangla&family=Manrope:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600',
-       head:'"Cormorant Garamond","Tiro Bangla",serif',bn:'"Tiro Bangla","Cormorant Garamond",serif',body:'"Manrope","Hind Siliguri",system-ui,sans-serif',hw:700},
-    c:{css:'Alkatra:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Anek+Bangla:wght@400;500;600',
-       head:'"Alkatra",serif',bn:'"Alkatra",serif',body:'"Instrument Sans","Anek Bangla",system-ui,sans-serif',hw:600}
-  };
-  var k=new URLSearchParams(location.search).get('type'),t=SETS[k];if(!t)return;
-  var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+t.css+'&display=swap';document.head.appendChild(l);
-  var st=document.createElement('style');
-  st.textContent=':root{--display:'+t.head+'!important;--bangla:'+t.bn+'!important;--body:'+t.body+'!important}'+
-    'h1,h2,h3{font-weight:'+t.hw+'!important}'+
-    '.hero-name,.brand span{font-family:"Alkatra",serif!important;font-weight:700!important}';
-  document.head.appendChild(st);
-})();
-</script>
 </head>
 <body>
 
@@ -677,6 +664,7 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
           <a class="btn btn-gold" href="#sweets" data-go="home" data-anchor="sweets">See today's sweets</a>
           <a class="btn btn-line" href="#farm" data-go="farm">Meet the farm</a>
         </div>
+        <div class="hero-proof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></svg><span><b>Dairy Icon 2022</b>, awarded to our farm by the Ministry of Fisheries and Livestock</span></div>
       </div>
       <div class="plate intro-on" id="carousel" aria-roledescription="carousel" aria-label="Our sweets">
         <div class="disc"><div class="intro" id="intro"><video id="intro-video" muted playsinline preload="auto" poster="video/logo-intro-poster.jpg" aria-label="Milk pours from a pitcher and becomes the Dudhaloy logo"><source src="video/logo-intro.webm" type="video/webm"><source src="video/logo-intro.mp4" type="video/mp4"></video></div><img class="slide on" src="img/gen/rasmalai.jpg" alt="Rasmalai" data-id="rasmalai" data-bn="রসমালাই" data-en="Rasmalai"><img class="slide" src="img/gen/roshogolla.jpg" alt="Roshogolla" data-id="roshogolla" data-bn="রসগোল্লা" data-en="Roshogolla" aria-hidden="true"><img class="slide" src="img/gen/mishti-doi.jpg" alt="Mishti doi" data-id="mishti-doi" data-bn="মিষ্টি দই" data-en="Mishti doi" aria-hidden="true"><img class="slide" src="img/gen/sandesh.jpg" alt="Sandesh" data-id="sandesh" data-bn="সন্দেশ" data-en="Sandesh" aria-hidden="true"><img class="slide" src="img/gen/chomchom.jpg" alt="Chomchom" data-id="chomchom" data-bn="চমচম" data-en="Chomchom" aria-hidden="true"></div>
