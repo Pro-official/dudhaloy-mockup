@@ -114,8 +114,8 @@ p{margin:0 0 1em;max-width:62ch}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sweet img,.slide,.plate-tag b,.plate-tag small{transition:none}}
 @media (max-width:900px){
   .hero{padding:128px 0 150px}
-  .hero .wrap{grid-template-columns:1fr}
-  .plate{width:min(340px,86%)}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .plate{width:min(340px,86%);order:-1}
   }
 
 /* promise cards: 64px below the hero wave (8pt scale) */
@@ -153,7 +153,8 @@ section{padding:128px 0}
 .steps li{counter-increment:s}
 .steps figure{margin:0 0 20px;border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:3/4}
 .steps img{width:100%;height:100%;object-fit:cover}
-.steps h3::before{content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--leaf);color:#fff;font:600 1rem var(--body);margin-right:12px;vertical-align:4px}
+.steps h3{display:flex;align-items:flex-start;gap:12px}
+.steps h3::before{content:counter(s);flex:none;display:grid;place-items:center;width:36px;height:36px;margin-top:-5px;border-radius:50%;background:var(--leaf);color:#fff;font:600 1rem var(--body)}
 .steps p{color:var(--ink-soft);margin-top:10px}
 @media (max-width:820px){.steps{grid-template-columns:1fr}.steps figure{aspect-ratio:4/3;border-radius:24px}}
 
@@ -573,9 +574,56 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
 .vd .x{position:fixed;top:20px;right:20px;width:48px;height:48px;border-radius:50%;border:0;background:var(--ivory);color:var(--forest);font-size:1.6rem;cursor:pointer;display:grid;place-items:center}
 @media (max-width:560px){.vd .frame{height:auto;width:min(92vw,420px)}}
 
+/* ============ OUR SHOP ============ */
+.shero{position:relative;min-height:min(88vh,780px);display:grid;align-items:end;color:#fff;overflow:hidden;background:var(--forest);padding:0}
+.shero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,59,34,.25) 0%,rgba(8,59,34,.35) 45%,rgba(6,40,22,.94) 100%)}
+.shero .wrap{position:relative;z-index:1;padding-bottom:72px}
+.shero h1{font-size:clamp(3rem,7vw,5.6rem);color:var(--ivory);margin-bottom:12px}
+.shero p{font-size:1.2rem;color:#E1ECE2;max-width:46ch}
+.shero-facts{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0 32px}
+.shero-facts>span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px 16px;font-size:.95rem;backdrop-filter:blur(6px)}
+.shero-facts b{color:var(--gold);margin-right:6px}
+.shero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.shero .ph{background:rgba(212,179,122,.3)}
+.amb{position:relative;border-radius:24px;overflow:hidden;background:#0b1f12}
+.amb.wide{aspect-ratio:16/9}
+.amb.tall{aspect-ratio:9/16}
+.amb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.amb-cap{position:absolute;left:18px;bottom:16px;z-index:1;color:#fff;font-weight:600;font-size:.95rem;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.amb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45));pointer-events:none}
+.inside{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;align-items:stretch}
+.inside-side{display:grid;grid-template-rows:1fr 1fr;gap:16px;min-height:0}
+.inside-side .pic,.inside-row>.pic{position:relative}
+.inside-side .pic img,.inside-row>.pic img{position:absolute;inset:0}
+.inside-row{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-top:16px}
+.inside-row>.pic{aspect-ratio:16/9}
+.inside-note{background:var(--milk-2);border-radius:24px;padding:36px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.inside-note h3{font-size:1.6rem}
+.inside-note p{color:var(--ink-soft);margin:0 0 8px}
+.inside-note .btn{align-self:flex-start}
+.kitchen{background:var(--milk-2)}
+.p-media .amb.tall{aspect-ratio:auto;height:100%}
+@media (max-width:900px){.inside,.inside-row{grid-template-columns:1fr}.inside-side{grid-template-columns:1fr 1fr;grid-template-rows:none}.inside-side .pic{aspect-ratio:4/3}.p-media .amb.tall{aspect-ratio:9/16;height:auto}}
+@media (prefers-reduced-motion:reduce){.amb video{display:none}.amb{background-size:cover;background-position:center}}
+
 .page{display:none}
 .page.on{display:block}
 </style>
+<script>
+/* font preview: index.html?font=Tiro%20Bangla swaps the Bangla + heading font so fonts can be judged on the real page */
+(function(){
+  var f=new URLSearchParams(location.search).get('font');if(!f)return;
+  var MAATEEN={'Kalpurush':'kalpurush','SolaimanLipi':'solaiman-lipi','Siyam Rupali':'siyam-rupali','Adorsho Lipi':'adorsho-lipi','BenSen Handwriting':'bensen-handwriting','Apona Lohit':'apona-lohit','Mukti':'mukti','Charukola Ultra Light':'charukola-ultra-light','Ekushey Lohit':'ekushey-lohit'};
+  var l=document.createElement('link');l.rel='stylesheet';
+  {l.href=MAATEEN[f]?'https://fonts.maateen.me/'+MAATEEN[f]+'/font.css':'https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+':wght@400;500;600;700;800&display=swap';
+  l.onerror=function(){l.href='https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+'&display=swap'};
+  document.head.appendChild(l);}
+  var st=document.createElement('style');
+  st.textContent=':root{--bangla:"'+f+'",system-ui,sans-serif!important;--display:"'+f+'",system-ui,sans-serif!important}';
+  document.head.appendChild(st);
+})();
+</script>
 </head>
 <body>
 
@@ -583,11 +631,11 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
 <header class="top" id="top">
   <div class="bar">
     <a class="brand" href="#home" data-go="home" aria-label="Dudhaloy home"><img src="img/dudhaloy-logo-600.png" alt=""><span>দুধালয়</span></a>
-    <nav class="nav" aria-label="Main"><a href="#home" data-go="home" data-nav="home">Home</a><a href="#sweets" data-go="home" data-anchor="sweets" data-nav="sweets">Sweets</a><a href="#farm" data-go="farm" data-nav="farm">Our farm</a><a href="#about" data-go="about" data-nav="about">About us</a></nav>
+    <nav class="nav" aria-label="Main"><a href="#home" data-go="home" data-nav="home">Home</a><a href="#shop" data-go="shop" data-nav="shop">Our shop</a><a href="#farm" data-go="farm" data-nav="farm">Our farm</a><a href="#about" data-go="about" data-nav="about">About us</a></nav>
     <a class="btn btn-gold" href="#contact" data-go="contact" data-nav="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Contact us</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
-  <nav class="sheet" id="sheet" aria-label="Mobile"><a href="#home" data-go="home" data-nav="home">Home</a><a href="#sweets" data-go="home" data-anchor="sweets" data-nav="sweets">Sweets</a><a href="#farm" data-go="farm" data-nav="farm">Our farm</a><a href="#about" data-go="about" data-nav="about">About us</a><a class="btn btn-gold" href="#contact" data-go="contact" data-nav="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Contact us</a></nav>
+  <nav class="sheet" id="sheet" aria-label="Mobile"><a href="#home" data-go="home" data-nav="home">Home</a><a href="#shop" data-go="shop" data-nav="shop">Our shop</a><a href="#farm" data-go="farm" data-nav="farm">Our farm</a><a href="#about" data-go="about" data-nav="about">About us</a><a class="btn btn-gold" href="#contact" data-go="contact" data-nav="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>Contact us</a></nav>
 </header>
 
 <main>
@@ -958,10 +1006,121 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   </section>
 </div>
 
+<div class="page" id="page-shop">
+  <section class="shero" aria-labelledby="shop-title">
+    <img src="img/shop/shop-front.jpg" alt="The Dudhaloy shop front at dusk, its windows full of sweets">
+    <div class="wrap">
+      <h1 id="shop-title">Our shop</h1>
+      <p>Where the morning's milk becomes the evening's sweets. Come in, taste, and take some home.</p>
+      <div class="shero-facts">
+        <span><b>Open every day</b> <span class="ph">9 am to 10 pm</span></span>
+        <span><b>Find us</b> <span class="ph">Shop address to be confirmed</span>, Moulvibazar</span>
+      </div>
+      <div class="shero-cta"><a class="btn btn-gold" href="#shop-sweets" data-go="shop" data-anchor="shop-sweets">See the sweets</a><a class="btn btn-line" href="#contact" data-go="contact">Get directions</a></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="inside-title">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 id="inside-title">Inside the shop</h2><p>Bright, clean and full of the smell of fresh milk.</p></div></div>
+      <div class="inside">
+        <div class="amb wide"><video class="amb-v" muted loop playsinline autoplay preload="metadata" poster="img/shop/shop-interior.jpg" aria-label="The counter and gift shelves"><source src="video/shop-inside.webm" type="video/webm"><source src="video/shop-inside.mp4" type="video/mp4"></video><span class="amb-cap">The counter and gift shelves</span></div>
+        <div class="inside-side">
+          <button type="button" class="pic" data-full="img/shop/display-trays.jpg" data-cap="The display case with rasmalai, roshogolla, sandesh and chomchom" aria-label="View larger: The display case with rasmalai, roshogolla, sandesh and chomchom"><img src="img/shop/display-trays.jpg" alt="The display case with rasmalai, roshogolla, sandesh and chomchom" loading="lazy"></button>
+          <button type="button" class="pic" data-full="img/shop/serving.jpg" data-cap="Rasmalai handed across the counter" aria-label="View larger: Rasmalai handed across the counter"><img src="img/shop/serving.jpg" alt="Rasmalai handed across the counter" loading="lazy"></button>
+        </div>
+      </div>
+      <div class="inside-row">
+        <button type="button" class="pic" data-full="img/shop/seating.jpg" data-cap="A quiet table for tea and sweets" aria-label="View larger: A quiet table for tea and sweets"><img src="img/shop/seating.jpg" alt="A quiet table for tea and sweets" loading="lazy"></button>
+        <div class="inside-note">
+          <h3>Sit for a while</h3>
+          <p>Have a cup of milk tea with a bowl of rasmalai at our tables, or take a box home. Everything on the counter was made today.</p>
+          <a class="btn btn-green" href="#contact" data-go="contact">Plan a visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kitchen" aria-labelledby="kitchen-title">
+    <div class="wrap">
+      <div class="projects">
+        <article class="project">
+          <div class="p-text">
+            <span class="tag">Our kitchen</span>
+            <h3 id="kitchen-title">Made by hand, every morning</h3>
+            <div class="sub">From the farm's milk to the counter in hours</div>
+            <p>Our sweet makers start at dawn when the milk arrives from R.M. Dairy. They make chhena by hand, roll it into balls, and cook them gently in syrup until they are soft and springy.</p>
+            <p>Mishti doi sets overnight in clay pots, and every gift box is packed by hand on the day you collect it.</p>
+          </div>
+          <div class="p-media">
+            <div class="amb tall"><video class="amb-v" muted loop playsinline autoplay preload="metadata" poster="img/shop/syrup-pot.jpg" aria-label="Roshogolla cooking in syrup"><source src="video/shop-syrup.webm" type="video/webm"><source src="video/shop-syrup.mp4" type="video/mp4"></video><span class="amb-cap">Roshogolla cooking in syrup</span></div>
+            <div class="stack three">
+              <button type="button" class="pic" data-full="img/shop/maker-rolling.jpg" data-cap="Our sweet maker rolling chhena by hand" aria-label="View larger: Our sweet maker rolling chhena by hand"><img src="img/shop/maker-rolling.jpg" alt="Our sweet maker rolling chhena by hand" loading="lazy"></button>
+              <button type="button" class="pic" data-full="img/shop/doi-pots.jpg" data-cap="Mishti doi setting in clay pots" aria-label="View larger: Mishti doi setting in clay pots"><img src="img/shop/doi-pots.jpg" alt="Mishti doi setting in clay pots" loading="lazy"></button>
+              <button type="button" class="pic" data-full="img/shop/packing-box.jpg" data-cap="Packing a gift box by hand" aria-label="View larger: Packing a gift box by hand"><img src="img/shop/packing-box.jpg" alt="Packing a gift box by hand" loading="lazy"></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop-sweets" aria-labelledby="shop-sweets-title">
+    <div class="wrap">
+      <div class="sec-head"><div><h2 id="shop-sweets-title">On the counter today</h2><p>Tap a sweet to see sizes and order on WhatsApp, Messenger or by phone.</p></div></div>
+      <div class="menu">
+        <a class="sweet" href="#sweet/rasmalai" data-go="sweet" data-sweet="rasmalai">
+          <figure><img src="img/gen/rasmalai.jpg" alt="Rasmalai in saffron milk"></figure>
+          <div class="sweet-row"><span class="bn">রসমালাই</span><span class="price"><span class="ph">৳ 60</span> <small>a piece</small></span></div>
+          <h3>Rasmalai</h3>
+          <p>Soft chhena dumplings resting in thickened milk with saffron and pistachio.</p>
+        </a>
+        <a class="sweet" href="#sweet/roshogolla" data-go="sweet" data-sweet="roshogolla">
+          <figure><img src="img/gen/roshogolla.jpg" alt="Roshogolla in light syrup in a clay bowl" loading="lazy"></figure>
+          <div class="sweet-row"><span class="bn">রসগোল্লা</span><span class="price"><span class="ph">৳ 25</span> <small>a piece</small></span></div>
+          <h3>Roshogolla</h3>
+          <p>Spongy, light and soaked in clear syrup.</p>
+        </a>
+        <a class="sweet" href="#sweet/mishti-doi" data-go="sweet" data-sweet="mishti-doi">
+          <figure><img src="img/gen/mishti-doi.jpg" alt="Mishti doi in a clay pot" loading="lazy"></figure>
+          <div class="sweet-row"><span class="bn">মিষ্টি দই</span><span class="price"><span class="ph">৳ 180</span> <small>a pot</small></span></div>
+          <h3>Mishti doi</h3>
+          <p>Slow set sweet yogurt in a clay pot, caramel on top.</p>
+        </a>
+        <a class="sweet" href="#sweet/sandesh" data-go="sweet" data-sweet="sandesh">
+          <figure><img src="img/gen/sandesh.jpg" alt="Sandesh pressed into flower shapes" loading="lazy"></figure>
+          <div class="sweet-row"><span class="bn">সন্দেশ</span><span class="price"><span class="ph">৳ 700</span> <small>a kg</small></span></div>
+          <h3>Sandesh</h3>
+          <p>Fresh chhena pressed by hand into shells and flowers.</p>
+        </a>
+        <a class="sweet" href="#sweet/chomchom" data-go="sweet" data-sweet="chomchom">
+          <figure><img src="img/gen/chomchom.jpg" alt="Chomchom coated in grated khoya" loading="lazy"></figure>
+          <div class="sweet-row"><span class="bn">চমচম</span><span class="price"><span class="ph">৳ 650</span> <small>a kg</small></span></div>
+          <h3>Chomchom</h3>
+          <p>Oval and rich, rolled in grated khoya.</p>
+        </a>
+        <a class="sweet" href="#sweet/gift-box" data-go="sweet" data-sweet="gift-box">
+          <figure><img src="img/gen/box.jpg" alt="Gift box of assorted sweets" loading="lazy"></figure>
+          <div class="sweet-row"><span class="bn">উপহার বাক্স</span><span class="price"><span class="ph">৳ 950</span> <small>a box</small></span></div>
+          <h3>Gift box</h3>
+          <p>Twelve of our sweets, packed for visiting family.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="handoff" aria-labelledby="shop-handoff-title">
+    <div class="wrap">
+      <div><h2 id="shop-handoff-title">Ordering for a wedding or event?</h2><p>Tell us a day ahead and we will make everything fresh that morning.</p></div>
+      <a class="btn btn-gold" href="#contact" data-go="contact" data-anchor="c-form" data-topic="Wedding or event order">Plan an order</a>
+    </div>
+  </section>
+</div>
+
 <div class="page" id="page-sweet">
   <section class="detail" aria-labelledby="d-en">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home" data-go="home">Home</a><span aria-hidden="true">/</span><a href="#sweets" data-go="home" data-anchor="sweets">Sweets</a><span aria-hidden="true">/</span><span id="d-crumb" aria-current="page"></span></nav>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="#home" data-go="home">Home</a><span aria-hidden="true">/</span><a href="#shop" data-go="shop">Our shop</a><span aria-hidden="true">/</span><span id="d-crumb" aria-current="page"></span></nav>
       <div class="d-grid">
         <div class="gallery">
           <div class="main"><img id="d-img" src="" alt=""></div>
@@ -1265,7 +1424,7 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
       <ul>
         <li><a href="#sweets" data-go="home" data-anchor="sweets">Today's sweets</a></li>
         <li><a href="#order" data-go="home" data-anchor="order">Big orders</a></li>
-        <li><a href="#farm" data-go="farm">Our farm</a></li>
+        <li><a href="#shop" data-go="shop">Our shop</a></li><li><a href="#farm" data-go="farm">Our farm</a></li>
         <li><a href="#about" data-go="about">About us</a></li><li><a href="#contact" data-go="contact">Contact us</a></li>
       </ul>
     </div>
@@ -1319,7 +1478,7 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   vid.addEventListener('error',endIntro,true);
   playIntro();
   var byId={};SWEETS.forEach(function(s){byId[s.id]=s});
-  var pages={home:document.getElementById('page-home'),sweet:document.getElementById('page-sweet'),farm:document.getElementById('page-farm'),about:document.getElementById('page-about'),contact:document.getElementById('page-contact')};
+  var pages={home:document.getElementById('page-home'),sweet:document.getElementById('page-sweet'),farm:document.getElementById('page-farm'),about:document.getElementById('page-about'),contact:document.getElementById('page-contact'),shop:document.getElementById('page-shop')};
   function el(id){return document.getElementById(id)}
   function orderText(){
     var sz=document.querySelector('#d-sizes input:checked'),q=el('d-qty').textContent;
@@ -1349,9 +1508,12 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   }
   function show(name,opt){
     Object.keys(pages).forEach(function(k){pages[k].classList.toggle('on',k===name)});
-    document.querySelectorAll('[data-nav]').forEach(function(a){var cur=(a.dataset.nav===name&&!(name==='home'&&opt==='sweets'))||((name==='sweet'||(name==='home'&&opt==='sweets'))&&a.dataset.nav==='sweets');if(cur){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}});
+    document.querySelectorAll('[data-nav]').forEach(function(a){var cur=(a.dataset.nav===name)||(name==='sweet'&&a.dataset.nav==='shop');if(cur){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}});
     /* light pages get a solid bar so the glass never sits on a pale background */
     top.classList.toggle('solid',name==='sweet'||name==='about'||name==='contact');
+    /* ambient clips only run on the page you are looking at */
+    document.querySelectorAll('.amb-v').forEach(function(v){
+      if(!reduce&&pages[name].contains(v)){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else{v.pause()}});
     if(name==='sweet'){fillSweet(opt)}else{document.title='Dudhaloy Sweets'}
     var t=(opt&&name!=='sweet')?el(opt):null;
     top.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');
@@ -1362,8 +1524,9 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
     if(h==='farm'){show('farm')}
     else if(h==='about'){show('about')}
     else if(h==='contact'){show('contact')}
+    else if(h==='shop'){show('shop')}
     else if(h.indexOf('sweet/')===0){show('sweet',h.slice(6))}
-    else if(h&&el(h)&&pages.home.contains(el(h))){show('home',h)}
+    else if(h&&el(h)){var pg=Object.keys(pages).filter(function(k){return pages[k].contains(el(h))})[0];show(pg||'home',h)}
     else{show('home')}
   }
   document.addEventListener('click',function(e){
@@ -1416,13 +1579,10 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   });
   /* closing the player stops the video */
   el('vd').addEventListener('close',function(){el('vd').querySelector('.frame').replaceChildren()});
+  if(reduce){document.querySelectorAll('.amb').forEach(function(a){var v=a.querySelector('video');a.style.backgroundImage='url('+v.getAttribute('poster')+')';v.removeAttribute('autoplay');v.pause()})}
   window.addEventListener('popstate',fromHash);
   window.addEventListener('scroll',function(){
     top.classList.toggle('scrolled',window.scrollY>24);
-    if(!pages.home.classList.contains('on'))return;
-    /* scroll spy: Sweets is current while the sweets section is under the bar */
-    var r=el('sweets').getBoundingClientRect(),inSweets=r.top<140&&r.bottom>140;
-    document.querySelectorAll('[data-nav]').forEach(function(a){var cur=inSweets?a.dataset.nav==='sweets':a.dataset.nav==='home';if(cur){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}});
   },{passive:true});
   fromHash();
 })();
