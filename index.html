@@ -614,7 +614,10 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
 /* font preview: index.html?font=Tiro%20Bangla swaps the Bangla + heading font so fonts can be judged on the real page */
 (function(){
   var f=new URLSearchParams(location.search).get('font');if(!f)return;
+  /* only known font names: the value goes into CSS and a stylesheet URL */
+  var GOOGLE=['Alkatra','Anek Bangla','Atma','Baloo Da 2','Galada','Google Sans','Hind Siliguri','Mina','Noto Sans Bengali','Noto Serif Bengali','Tiro Bangla'];
   var MAATEEN={'Kalpurush':'kalpurush','SolaimanLipi':'solaiman-lipi','Siyam Rupali':'siyam-rupali','Adorsho Lipi':'adorsho-lipi','BenSen Handwriting':'bensen-handwriting','Apona Lohit':'apona-lohit','Mukti':'mukti','Charukola Ultra Light':'charukola-ultra-light','Ekushey Lohit':'ekushey-lohit'};
+  if(GOOGLE.indexOf(f)<0&&!MAATEEN.hasOwnProperty(f))return;
   var l=document.createElement('link');l.rel='stylesheet';
   {l.href=MAATEEN[f]?'https://fonts.maateen.me/'+MAATEEN[f]+'/font.css':'https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+':wght@400;500;600;700;800&display=swap';
   l.onerror=function(){l.href='https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+'&display=swap'};
