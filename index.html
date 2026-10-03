@@ -616,10 +616,12 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   var f=new URLSearchParams(location.search).get('font');if(!f)return;
   /* only known font names: the value goes into CSS and a stylesheet URL */
   var GOOGLE=['Alkatra','Anek Bangla','Atma','Baloo Da 2','Galada','Google Sans','Hind Siliguri','Mina','Noto Sans Bengali','Noto Serif Bengali','Tiro Bangla'];
-  var MAATEEN={'Kalpurush':'kalpurush','SolaimanLipi':'solaiman-lipi','Siyam Rupali':'siyam-rupali','Adorsho Lipi':'adorsho-lipi','BenSen Handwriting':'bensen-handwriting','Apona Lohit':'apona-lohit','Mukti':'mukti','Charukola Ultra Light':'charukola-ultra-light','Ekushey Lohit':'ekushey-lohit'};
-  if(GOOGLE.indexOf(f)<0&&!MAATEEN.hasOwnProperty(f))return;
+  var MAATEEN={'Kalpurush':'kalpurush','SolaimanLipi':'solaiman-lipi','Siyam Rupali':'siyam-rupali','Adorsho Lipi':'adorsho-lipi','BenSen Handwriting':'bensen-handwriting','Apona Lohit':'apona-lohit','Mukti':'mukti','Charukola Ultra Light':'charukola-ultra-light','Ekushey Lohit':'ekushey-lohit','Lohit Bengali':'lohit-bengali'};
+  var SELF={'Mitra Mono':'mitra','Sagar':'sagarnormal','Mukti Narrow':'muktinarrow'};
+  if(GOOGLE.indexOf(f)<0&&!MAATEEN.hasOwnProperty(f)&&!SELF.hasOwnProperty(f))return;
+  if(SELF.hasOwnProperty(f)){var sf=document.createElement('style');sf.textContent="@font-face{font-family:'"+f+"';src:url('fonts/"+SELF[f]+".woff2') format('woff2')}";document.head.appendChild(sf)}
   var l=document.createElement('link');l.rel='stylesheet';
-  {l.href=MAATEEN[f]?'https://fonts.maateen.me/'+MAATEEN[f]+'/font.css':'https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+':wght@400;500;600;700;800&display=swap';
+  if(!SELF.hasOwnProperty(f)){l.href=MAATEEN[f]?'https://fonts.maateen.me/'+MAATEEN[f]+'/font.css':'https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+':wght@400;500;600;700;800&display=swap';
   l.onerror=function(){l.href='https://fonts.googleapis.com/css2?family='+encodeURIComponent(f).replace(/%20/g,'+')+'&display=swap'};
   document.head.appendChild(l);}
   var st=document.createElement('style');
