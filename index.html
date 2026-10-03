@@ -321,9 +321,9 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
 .stepper output{min-width:32px;text-align:center;font-weight:600}
 .d-order{display:grid;gap:12px}
 .d-order-label{font-weight:600}
-.chans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.chan{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:20px;border:1.5px solid var(--line-strong,#C3D2B8);background:#fff;text-decoration:none;font-weight:600;color:var(--ink);transition:border-color .2s,transform .15s,box-shadow .2s}
-.chan svg{width:30px;height:30px}
+.chans{display:flex;gap:14px}
+.chan{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;border:1.5px solid var(--line-strong,#C3D2B8);background:#fff;text-decoration:none;font-weight:600;color:var(--ink);transition:border-color .2s,transform .15s,box-shadow .2s}
+.chan svg{width:28px;height:28px}
 .chan:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(8,59,34,.1)}
 .chan.call svg{color:var(--leaf)}.chan.call:hover{border-color:var(--leaf)}
 .chan.wa svg{color:#1FAF54}.chan.wa:hover{border-color:#1FAF54}
@@ -1151,9 +1151,9 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
           <div class="d-order">
             <span class="d-order-label">Order directly</span>
             <div class="chans">
-              <a class="chan call" id="ch-call" href="tel:+8801700000000"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Call</span></a>
-              <a class="chan wa" id="ch-wa" href="https://wa.me/8801700000000" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg><span>WhatsApp</span></a>
-              <a class="chan fb" id="ch-fb" href="https://m.me/dudhaloy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.4 2 2 6.1 2 11.7c0 2.9 1.2 5.5 3.2 7.2v3.1l3-1.6c1.2.3 2.4.5 3.8.5 5.6 0 10-4.1 10-9.7S17.6 2 12 2zm1 13-2.5-2.7L5.6 15l5.4-5.7 2.6 2.7 4.8-2.7z"/></svg><span>Messenger</span></a>
+              <a class="chan call" id="ch-call" href="tel:+8801700000000" aria-label="Call the shop" title="Call the shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+              <a class="chan wa" id="ch-wa" href="https://wa.me/8801700000000" target="_blank" rel="noopener" aria-label="Order on WhatsApp" title="Order on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
+              <a class="chan fb" id="ch-fb" href="https://m.me/dudhaloy" target="_blank" rel="noopener" aria-label="Order on Messenger" title="Order on Messenger"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.4 2 2 6.1 2 11.7c0 2.9 1.2 5.5 3.2 7.2v3.1l3-1.6c1.2.3 2.4.5 3.8.5 5.6 0 10-4.1 10-9.7S17.6 2 12 2zm1 13-2.5-2.7L5.6 15l5.4-5.7 2.6 2.7 4.8-2.7z"/></svg></a>
             </div>
             <small class="chan-note">WhatsApp and Messenger open with your order already written. <span class="ph">Shop number and page are placeholders.</span></small>
           </div>
