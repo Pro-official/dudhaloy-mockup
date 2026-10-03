@@ -629,6 +629,26 @@ legend{font-weight:600;margin-bottom:12px;padding:0}
   document.head.appendChild(st);
 })();
 </script>
+<script>
+/* type preview: index.html?type=a|b|c tries a full font pairing. Alkatra is the hero name in all three. */
+(function(){
+  var SETS={
+    a:{css:'Alkatra:wght@600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+Bengali:wght@500;600;700&family=Figtree:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600',
+       head:'"Fraunces","Noto Serif Bengali",serif',bn:'"Noto Serif Bengali","Fraunces",serif',body:'"Figtree","Noto Sans Bengali",system-ui,sans-serif',hw:600},
+    b:{css:'Alkatra:wght@600;700&family=Cormorant+Garamond:wght@500;600;700&family=Tiro+Bangla&family=Manrope:wght@400;500;600&family=Hind+Siliguri:wght@400;500;600',
+       head:'"Cormorant Garamond","Tiro Bangla",serif',bn:'"Tiro Bangla","Cormorant Garamond",serif',body:'"Manrope","Hind Siliguri",system-ui,sans-serif',hw:700},
+    c:{css:'Alkatra:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=Anek+Bangla:wght@400;500;600',
+       head:'"Alkatra",serif',bn:'"Alkatra",serif',body:'"Instrument Sans","Anek Bangla",system-ui,sans-serif',hw:600}
+  };
+  var k=new URLSearchParams(location.search).get('type'),t=SETS[k];if(!t)return;
+  var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+t.css+'&display=swap';document.head.appendChild(l);
+  var st=document.createElement('style');
+  st.textContent=':root{--display:'+t.head+'!important;--bangla:'+t.bn+'!important;--body:'+t.body+'!important}'+
+    'h1,h2,h3{font-weight:'+t.hw+'!important}'+
+    '.hero-name,.brand span{font-family:"Alkatra",serif!important;font-weight:700!important}';
+  document.head.appendChild(st);
+})();
+</script>
 </head>
 <body>
 
